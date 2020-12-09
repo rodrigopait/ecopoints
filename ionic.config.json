@@ -1,0 +1,8 @@
+{
+  "name": "ecopoints",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "ea502a7d"
+}
