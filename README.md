@@ -6,7 +6,7 @@ crear y editar puntos de reciclaje de diferentes materiales. Cuenta con un mapa 
 
 _Una vez clonada la aplicación se deben ejecutar los siguientes pasos:_
 
-```
+```bash
 npm install && ionic serve
 ```
 
