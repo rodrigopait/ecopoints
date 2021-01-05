@@ -64,7 +64,7 @@ import {
 } from "@ionic/vue";
 
 export default {
-  name: "Tab1",
+  name: "AltaDeUsuario",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
 };
 </script>

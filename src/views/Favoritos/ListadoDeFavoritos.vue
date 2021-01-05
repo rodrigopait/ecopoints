@@ -20,12 +20,7 @@
           <ion-list>
             <ion-item>
               <ion-label>Punto verde La Plata</ion-label>
-              <ion-button
-                @click="presentAlertConfirm"
-                size="small"
-                color="danger"
-                >X</ion-button
-              >
+              <ion-button size="small" color="danger">X</ion-button>
             </ion-item>
             <ion-item>
               <ion-label>Punto verde Villa Elisa</ion-label>
@@ -50,3 +45,30 @@
   </ion-page>
 </template>
 
+<script>
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonCard,
+  IonCardContent,
+  IonLabel,
+  IonButton,
+} from "@ionic/vue";
+export default {
+  name: "Favoritos",
+  components: {
+    IonPage,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardContent,
+    IonLabel,
+    IonButton,
+  },
+};
+</script>
