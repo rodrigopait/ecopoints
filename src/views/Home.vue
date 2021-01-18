@@ -28,7 +28,7 @@
           <ion-card-title>Donde llevar los elementos a reciclar</ion-card-title>
         </ion-card-header>
         <ion-card-content> Ingresá y conocé donde llevarlos. </ion-card-content>
-        <ion-button expand="full" color="success" href="/mapa"
+        <ion-button expand="full" color="success" router-link="/tabs/mapa"
           >Ver más</ion-button
         >
       </ion-card>
@@ -46,7 +46,10 @@
           Informate como separar los residuos y así ayudar a evitar la
           contaminación.
         </ion-card-content>
-        <ion-button expand="full" color="success" href="/SepararResiduos"
+        <ion-button
+          expand="full"
+          color="success"
+          router-link="/tabs/home/separar-residuos"
           >Ver más</ion-button
         >
       </ion-card>
@@ -65,7 +68,10 @@
           Conocé de que manera, tu aporte permite reutilizar los materiales,
           reintroduciendolos en el sistema productivo.
         </ion-card-content>
-        <ion-button expand="full" color="success" href="/ImportanciaReciclado"
+        <ion-button
+          expand="full"
+          color="success"
+          router-link="/tabs/home/importancia-reciclado"
           >Ver más</ion-button
         >
       </ion-card>
@@ -83,11 +89,15 @@ import {
   IonCard,
   IonCardContent,
   IonCardSubtitle,
+  IonCardHeader,
   IonCardTitle,
+  IonLabel,
+  IonButton,
+  IonChip,
 } from "@ionic/vue";
 
 export default {
-  name: "Tab1",
+  name: "home",
   components: {
     IonHeader,
     IonToolbar,
@@ -97,7 +107,11 @@ export default {
     IonCard,
     IonCardContent,
     IonCardSubtitle,
+    IonCardHeader,
     IonCardTitle,
+    IonLabel,
+    IonButton,
+    IonChip,
   },
 };
 </script>

@@ -86,7 +86,7 @@ import {
 } from "@ionic/vue";
 
 export default {
-  name: "Tab1",
+  name: "AltaDePuntoVerde",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
 };
 </script>

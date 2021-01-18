@@ -33,10 +33,24 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonCardSubtitle,
+  IonText,
+  IonCardContent,
+  IonCard,
 } from "@ionic/vue";
 
 export default {
-  name: "Tab1",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  name: "Mapa",
+  components: {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonPage,
+    IonCardSubtitle,
+    IonText,
+    IonCardContent,
+    IonCard,
+  },
 };
 </script>

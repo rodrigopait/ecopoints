@@ -98,7 +98,7 @@ import {
 } from "@ionic/vue";
 
 export default {
-  name: "Tab1",
+  name: "SepararResiduos",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
 };
 </script>

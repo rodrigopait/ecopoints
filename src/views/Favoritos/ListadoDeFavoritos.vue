@@ -50,3 +50,30 @@
   </ion-page>
 </template>
 
+<script>
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonCard,
+  IonCardContent,
+  IonLabel,
+  IonButton,
+} from "@ionic/vue";
+export default {
+  name: "Favoritos",
+  components: {
+    IonPage,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardContent,
+    IonLabel,
+    IonButton,
+  },
+};
+</script>

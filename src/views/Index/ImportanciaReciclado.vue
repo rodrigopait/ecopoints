@@ -125,7 +125,7 @@ import {
 } from "@ionic/vue";
 
 export default {
-  name: "Tab1",
+  name: "ImportanciaReciclado",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
 };
 </script>
