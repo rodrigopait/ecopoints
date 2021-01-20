@@ -57,8 +57,7 @@ const routes = [
     component: () => import('@/views/Usuarios/ActDeUsuario.vue'),
   },
   {
-    path: '/altaDePuntoVerde',
-    name: 'AltaDePuntoVerde',
+    path: '/altadepuntoverde',
     component: () => import('@/views/PuntosVerdes/AltaDePuntoVerde.vue'),
   },
   {

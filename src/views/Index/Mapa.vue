@@ -20,6 +20,11 @@
         <ion-card-content>
           <h2 class="ion-margin">Acá vendría el mapa.</h2>
           <h2 class="ion-margin">La imagen de arriba es ilustrativa</h2>
+          <router-link to="/altadepuntoverde">
+            <ion-button expand="full" color="success"
+              >Agregar punto verde</ion-button
+            ></router-link
+          >
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -37,6 +42,7 @@ import {
   IonText,
   IonCardContent,
   IonCard,
+  IonButton,
 } from "@ionic/vue";
 
 export default {
@@ -51,6 +57,7 @@ export default {
     IonText,
     IonCardContent,
     IonCard,
+    IonButton,
   },
 };
 </script>
