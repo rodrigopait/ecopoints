@@ -45,7 +45,9 @@
             <ion-input type="password"></ion-input>
           </ion-item>
           <div class="ion-margin">
-            <ion-button color="success">Guardar</ion-button>
+            <ion-button color="success" @click="altaUsuario"
+              >Guardar</ion-button
+            >
             <ion-button color="primary">Cancelar</ion-button>
           </div>
         </ion-card-content>
@@ -54,7 +56,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script>
 import {
   IonPage,
   IonHeader,
@@ -62,9 +64,22 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/vue";
+import { db } from "@/db";
 
 export default {
   name: "AltaDeUsuario",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  methods: {
+    altaUsuario() {
+      const example = {
+        email: "user@example.com",
+        name: "user",
+        password: "123",
+      };
+      db.collection("users")
+        .add(example)
+        .then((res) => console.log(res));
+    },
+  },
 };
 </script>

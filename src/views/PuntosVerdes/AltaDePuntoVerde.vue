@@ -89,28 +89,28 @@
 
 <script>
 import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
+  alertController,
   IonButton,
-  IonTextarea,
-  IonCardContent,
   IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
   IonCheckbox,
+  IonContent,
+  IonHeader,
+  IonInput,
   IonItem,
   IonLabel,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonText,
-  IonInput,
   IonList,
-  alertController,
+  IonPage,
+  IonText,
+  IonTextarea,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/vue";
-import { db } from "@/db";
-import { useRouter } from "vue-router";
+import {db} from "@/db";
+import {useRouter} from "vue-router";
 
 export default {
   name: "AltaDePuntoVerde",
