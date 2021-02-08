@@ -24,7 +24,7 @@
           <!-- Inputs del form -->
           <ion-item>
             <ion-label color="medium" position="floating">Nombre</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" id="nombre" name="nombre"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label color="medium" position="floating">Apellido</ion-label>
@@ -43,7 +43,9 @@
             <ion-input type="password"></ion-input>
           </ion-item>
           <div class="ion-margin">
-            <ion-button color="success">Actualizar</ion-button>
+            <ion-button @click="showToast" color="success">Actualizar</ion-button>
+            <ion-button @click="openToast">Open Toast</ion-button>
+            <ion-button @click="openToastOptions">Open Toast: Options</ion-button>
             <ion-button color="primary">Cancelar</ion-button>
           </div>
         </ion-card-content>
@@ -59,10 +61,29 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  toastController 
 } from "@ionic/vue";
+
 
 export default {
   name: "ActDeUsuario",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
-};
+ 
+    methods: {
+      async openToast() {
+        const toast = await toastController.create({
+            message: 'Your settings have been saved.',
+           
+            duration: 4000,
+          })
+        return toast.present();
+      },
+    },
+    
+  }
+  
+
+ 
+
+
 </script>

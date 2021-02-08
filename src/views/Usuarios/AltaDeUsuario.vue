@@ -24,7 +24,7 @@
           <!-- Inputs del form -->
           <ion-item>
             <ion-label color="medium" position="floating">Nombre</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" id="nombre" name="nombre"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label color="medium" position="floating">Apellido</ion-label>
@@ -49,6 +49,7 @@
               >Guardar</ion-button
             >
             <ion-button color="primary">Cancelar</ion-button>
+            <ion-button @click="validacion">Alta</ion-button>
           </div>
         </ion-card-content>
       </ion-card>
@@ -63,13 +64,24 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  toastController
 } from "@ionic/vue";
 import { db } from "@/db";
 
 export default {
   name: "AltaDeUsuario",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+
   methods: {
+    validacion() {
+      if (this.nombre == "") {
+        alert("nombre vacio");
+        console.log("vacio nombre");
+      }
+        alert("nombre vacio");
+      
+    },
+
     altaUsuario() {
       const example = {
         email: "user@example.com",

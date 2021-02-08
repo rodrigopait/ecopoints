@@ -65,6 +65,12 @@ const routes = [
     name: 'EditarPuntoVerde',
     component: () => import('@/views/PuntosVerdes/ActDePuntoVerde.vue'),
   },
+
+  {
+    path: '/prueba',
+    name: 'Prueba',
+    component: () => import('@/views/Prueba/Prueba.vue'),
+  },
 ];
 
 const router = createRouter({
