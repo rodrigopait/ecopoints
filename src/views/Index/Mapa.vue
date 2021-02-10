@@ -11,12 +11,20 @@
         <ion-toolbar> </ion-toolbar>
       </ion-header>
       <h3></h3>
+      <ion-card-header>
+        <ion-text color="success">
+          <h1 class="ion-text-center">
+            <ion-icon :icon="person" />Mapa de puntos verdes
+          </h1>
+        </ion-text>
+        <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
+        <ion-card-title></ion-card-title>
+      </ion-card-header>
+
       <ion-card>
         <img src="assets/img/mapas.jpg" alt="Imagen de un mapa" />
         <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
-        <ion-text color="success">
-          <h1 class="ion-text-center">Mapa de puntos verdes</h1>
-        </ion-text>
+        <ion-text color="success"> </ion-text>
         <ion-card-content>
           <h2 class="ion-margin">Acá vendría el mapa.</h2>
           <h2 class="ion-margin">La imagen de arriba es ilustrativa</h2>

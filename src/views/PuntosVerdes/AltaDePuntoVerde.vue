@@ -13,7 +13,7 @@
       <ion-card>
         <ion-card-header>
           <ion-text color="success">
-            <h1 class="ion-text-center">Alta de punto verde</h1>
+            <h1 class="ion-text-center"><ion-icon :icon="add" /> Alta de punto verde</h1>
           </ion-text>
           <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
           <ion-card-title></ion-card-title>
@@ -109,6 +109,11 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/vue";
+
+import {
+ add,
+} from "ionicons/icons";
+
 import {db} from "@/db";
 import {useRouter} from "vue-router";
 
@@ -136,8 +141,10 @@ export default {
   },
   setup() {
     const router = useRouter();
-    return { router };
+    return { router,add };
+    
   },
+
   data() {
     return {
       puntoVerdeActual: {

@@ -18,10 +18,10 @@
         </ion-tab-button>
 
         <!-- Falta agregar esta seccion -->
-        <!-- <ion-tab-button tab="config" href="/config">
+         <ion-tab-button tab="config" href="/editarMisPreferencias">
           <ion-icon :icon="cogOutline" />
           <ion-label>Configuración</ion-label>
-        </ion-tab-button> -->
+        </ion-tab-button> 
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>

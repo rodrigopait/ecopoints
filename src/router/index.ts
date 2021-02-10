@@ -35,16 +35,17 @@ const routes = [
         path: 'mapa',
         component: () => import('@/views/Index/Mapa.vue'),
       },
-      {
-        path: 'favoritos',
-        component: () => import('@/views/Favoritos/ListadoDeFavoritos.vue'),
-      },
+
       {
         path: '/menuLogueado',
         name: 'MenuLogueado',
         component: () => import('@/views/Menu/MenuLogueado.vue'),
       },
     ],
+  },
+  {
+    path: '/favoritos',
+    component: () => import('@/views/Favoritos/ListadoDeFavoritos.vue'),
   },
   {
     path: '/altaDeUsuario',
@@ -57,6 +58,11 @@ const routes = [
     component: () => import('@/views/Usuarios/ActDeUsuario.vue'),
   },
   {
+    path: '/editarMisPreferencias',
+    name: 'EditarMisPreferencias',
+    component: () => import('@/views/Usuarios/ActDePreferencias.vue'),
+  },
+  {
     path: '/altadepuntoverde',
     component: () => import('@/views/PuntosVerdes/AltaDePuntoVerde.vue'),
   },
@@ -65,6 +71,12 @@ const routes = [
     name: 'EditarPuntoVerde',
     component: () => import('@/views/PuntosVerdes/ActDePuntoVerde.vue'),
   },
+  {
+    path: '/listadoDePuntosVerdes',
+    name: 'ListadoDePuntosVerdes',
+    component: () => import('@/views/PuntosVerdes/ListadoDePuntosVerdes.vue'),
+  },
+  
 ];
 
 const router = createRouter({

@@ -13,7 +13,7 @@
 
       <ion-card>
         <ion-text color="success">
-          <h1 class="ion-text-center">Mis puntos favoritos</h1>
+          <h1 class="ion-text-center"><ion-icon :icon="rose" /> Mis puntos favoritos</h1>
         </ion-text>
         <ion-card-content>
           <!-- Listado de puntos verdes -->
@@ -62,6 +62,13 @@ import {
   IonLabel,
   IonButton,
 } from "@ionic/vue";
+
+
+import {
+ rose,
+} from "ionicons/icons";
+
+
 export default {
   name: "Favoritos",
   components: {
@@ -75,5 +82,12 @@ export default {
     IonLabel,
     IonButton,
   },
+setup() {
+    return {
+      rose,
+    };
+  },
+  
 };
+
 </script>
