@@ -74,12 +74,14 @@
             ></ion-textarea>
           </ion-item>
           <div class="ion-margin">
+             <div class="ion-text-center ion-margin">  
             <ion-button color="success" @click="guardarPuntoVerde"
               >Guardar</ion-button
             >
             <ion-button color="primary" @click="$router.go(-1)"
               >Cancelar</ion-button
             >
+             </div>
           </div>
         </ion-card-content>
       </ion-card>

@@ -66,9 +66,11 @@
               placeholder="Observaciones"
             ></ion-textarea>
           </ion-item>
-          <div class="ion-margin">
+          <div class="ion-text-center ion-margin">
             <ion-button color="success">Actualizar</ion-button>
-            <ion-button color="primary">Cancelar</ion-button>
+            <router-link color="success" no-lines to="/listadoDePuntosVerdes">
+              <ion-button color="primary"> Volver </ion-button>
+            </router-link>
           </div>
         </ion-card-content>
       </ion-card>

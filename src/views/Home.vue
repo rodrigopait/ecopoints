@@ -16,7 +16,11 @@
           accesible</ion-label
         >
       </ion-chip>
-
+      <div class="ion-text-center">
+      <ion-button expand="" class="text-center" color="success" router-link="/altaDeUsuario"
+          >Registrate ahora!</ion-button
+        >
+    </div>
       <ion-card color="primary">
         <img
           src="assets/img/ecopoints.jpg"

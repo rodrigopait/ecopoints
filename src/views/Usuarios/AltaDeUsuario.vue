@@ -14,7 +14,9 @@
       <ion-card>
         <ion-card-header>
           <ion-text color="success">
-            <h1 class="ion-text-center">Alta de usuario</h1>
+            <h1 class="ion-text-center">
+              <ion-icon :icon="people" /> Alta de usuario
+            </h1>
           </ion-text>
           <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
           <ion-card-title></ion-card-title>
@@ -45,10 +47,14 @@
             <ion-input type="password"></ion-input>
           </ion-item>
           <div class="ion-margin">
-            <ion-button color="success" @click="altaUsuario"
-              >Guardar</ion-button
-            >
-            <ion-button color="primary">Cancelar</ion-button>
+            <div class="ion-text-center ion-margin">
+              <ion-button color="success" @click="altaUsuario"
+                >Guardar</ion-button
+              >
+              <router-link color="success" no-lines to="/">
+                <ion-button color="primary"> Volver </ion-button>
+              </router-link>
+            </div>
           </div>
         </ion-card-content>
       </ion-card>
@@ -66,9 +72,18 @@ import {
 } from "@ionic/vue";
 import { db } from "@/db";
 
+import { people } from "ionicons/icons";
+
 export default {
   name: "AltaDeUsuario",
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+
+  setup() {
+    return {
+      people,
+    };
+  },
+
   methods: {
     altaUsuario() {
       const example = {
