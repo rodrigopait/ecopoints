@@ -81,6 +81,7 @@
                 </ion-button>
               </router-link>
             </div>
+             <ion-button @click="openToast">Open Toast</ion-button>
           </form>
         </ion-card-content>
       </ion-card>
@@ -97,11 +98,14 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonToast, 
 } from "@ionic/vue";
+
 
 import { person } from "ionicons/icons";
 
 import { required, minLength } from "vuelidate/lib/validators";
+
 
 export default {
   name: "ActDeUsuario",
@@ -124,16 +128,22 @@ export default {
     };
   },
 
+  
+
   methods: {
+    
     procesar() {
       this.submited = true;
       // if (document.getElementById("nombre").value == "hola") {
       //   alert("bien");
       //}
-      if (this.$v.$invalid) {
-        return false;
+      if (document.actDeUsuario.nombre.value.length==0 ) { 
+        alert("hola");
+        document.actDeUsuario.nombre.focus();    
+        
       }
     },
+
 
     validations: {
       contacto: {
