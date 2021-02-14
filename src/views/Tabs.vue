@@ -16,7 +16,6 @@
           <ion-icon :icon="starOutline" />
           <ion-label>Favoritos</ion-label>
         </ion-tab-button>
-
          <ion-tab-button tab="config" href="/editarMisPreferencias">
           <ion-icon :icon="cogOutline" />
           <ion-label>Configuración</ion-label>

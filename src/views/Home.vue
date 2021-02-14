@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar color="success">
+     <ion-toolbar color="success">
         <ion-title>Ecopoints</ion-title>
       </ion-toolbar>
     </ion-header>

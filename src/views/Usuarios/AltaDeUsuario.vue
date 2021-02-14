@@ -34,7 +34,7 @@
           </ion-item>
           <ion-item>
             <ion-label color="medium" position="floating">DNI</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="text"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label color="medium" position="floating">Mail</ion-label>
