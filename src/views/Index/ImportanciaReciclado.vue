@@ -11,15 +11,23 @@
         <ion-toolbar> </ion-toolbar>
       </ion-header>
       <h3></h3>
+
       <ion-card>
         <img
           src="assets/img/residuos.jpg"
           alt="Imagen del logo universal del reciclaje"
         />
         <ion-card-header>
-          <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
+          <div class="font-controls">
+            <div class="font-control" id="font-up">A<sup>+</sup></div>
+            <div class="font-control" id="font-down">A<sup>-</sup></div>
+          </div>
+          <ion-card-subtitle class="ion-text-center"> </ion-card-subtitle>
+          <br />
           <ion-text color="tertiary">
-            <h1 class="ion-text-center">La importancia del reciclado</h1>
+            <h1 class="ion-text-center ion-margin-top">
+              La importancia del reciclado
+            </h1>
           </ion-text>
           <ion-card-title></ion-card-title>
         </ion-card-header>
@@ -115,7 +123,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import {
   IonPage,
   IonHeader,
@@ -126,6 +134,41 @@ import {
 
 export default {
   name: "ImportanciaReciclado",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+    methods: {
+      
+ 
+ 
+
+
+},
 };
+
 </script>
+
+
+
+<style>
+:root {
+  --font-size: 1;
+}
+
+body {
+  font-size: calc(var(--font-size) * 1em);
+}
+
+.font-controls {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  display: flex;
+  font-size: 1.5em;
+}
+
+.font-control {
+  margin-left: 0.5em;
+  padding: 0.25em;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+</style>

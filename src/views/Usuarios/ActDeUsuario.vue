@@ -59,7 +59,7 @@
 
             <ion-item>
               <ion-label color="medium" position="floating">Mail</ion-label>
-              <ion-input type="mail" name="mail" id="dni" v-on:click="limpiarMail()"></ion-input>
+              <ion-input type="text" name="mail" id="dni" v-on:click="limpiarMail()"></ion-input>
             </ion-item>
             <ion-text id="mailMsg" color="danger"> </ion-text>
 
