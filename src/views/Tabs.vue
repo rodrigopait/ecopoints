@@ -16,10 +16,11 @@
           <ion-icon :icon="starOutline" />
           <ion-label>Favoritos</ion-label>
         </ion-tab-button>
-         <ion-tab-button tab="config" href="/editarMisPreferencias">
+
+        <ion-tab-button tab="config" href="/tabs/editarMisPreferencias">
           <ion-icon :icon="cogOutline" />
           <ion-label>Configuración</ion-label>
-        </ion-tab-button> 
+        </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
@@ -33,17 +34,17 @@ import {
   IonLabel,
   IonIcon,
   IonPage,
-} from "@ionic/vue";
+} from '@ionic/vue';
 import {
   homeOutline,
   mapOutline,
   cogOutline,
   starOutline,
   personOutline,
-} from "ionicons/icons";
+} from 'ionicons/icons';
 
 export default {
-  name: "Tabs",
+  name: 'Tabs',
   components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
   setup() {
     return {

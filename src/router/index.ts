@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 
-
 import Tabs from '../views/Tabs.vue';
 
 const routes = [
@@ -37,15 +36,21 @@ const routes = [
       },
 
       {
-        path: '/menuLogueado',
+        path: 'menuLogueado',
         name: 'MenuLogueado',
         component: () => import('@/views/Menu/MenuLogueado.vue'),
       },
+      {
+        path: 'favoritos',
+        name: 'Favoritos',
+        component: () => import('@/views/Favoritos/ListadoDeFavoritos.vue'),
+      },
+      {
+        path: 'editarMisPreferencias',
+        name: 'EditarMisPreferencias',
+        component: () => import('@/views/Usuarios/ActDePreferencias.vue'),
+      },
     ],
-  },
-  {
-    path: '/favoritos',
-    component: () => import('@/views/Favoritos/ListadoDeFavoritos.vue'),
   },
   {
     path: '/altaDeUsuario',
@@ -57,11 +62,7 @@ const routes = [
     name: 'EditarMiPerfil',
     component: () => import('@/views/Usuarios/ActDeUsuario.vue'),
   },
-  {
-    path: '/editarMisPreferencias',
-    name: 'EditarMisPreferencias',
-    component: () => import('@/views/Usuarios/ActDePreferencias.vue'),
-  },
+
   {
     path: '/altadepuntoverde',
     component: () => import('@/views/PuntosVerdes/AltaDePuntoVerde.vue'),
@@ -76,7 +77,6 @@ const routes = [
     name: 'ListadoDePuntosVerdes',
     component: () => import('@/views/PuntosVerdes/ListadoDePuntosVerdes.vue'),
   },
-  
 ];
 
 const router = createRouter({
