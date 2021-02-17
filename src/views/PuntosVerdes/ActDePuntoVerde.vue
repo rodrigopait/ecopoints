@@ -67,23 +67,58 @@
             <ion-item>
               <ion-list>
                 <ion-item>
-                  <ion-checkbox color="success" slot="start" name="residuos" id="papeles" value="papeles"  v-on:click="limpiarResiduos()"></ion-checkbox>
+                  <ion-checkbox
+                    color="success"
+                    slot="start"
+                    name="residuos"
+                    id="papeles"
+                    value="papeles"
+                    v-on:click="limpiarResiduos()"
+                  ></ion-checkbox>
                   <ion-label>Papeles</ion-label>
                 </ion-item>
                 <ion-item>
-                  <ion-checkbox color="success" slot="start" name="residuos" id="cartones" value="cartones" v-on:click="limpiarResiduos()"></ion-checkbox>
+                  <ion-checkbox
+                    color="success"
+                    slot="start"
+                    name="residuos"
+                    id="cartones"
+                    value="cartones"
+                    v-on:click="limpiarResiduos()"
+                  ></ion-checkbox>
                   <ion-label>Cartones</ion-label>
                 </ion-item>
                 <ion-item>
-                  <ion-checkbox color="success" slot="start" name="residuos" id="plasticos" value="plasticos" v-on:click="limpiarResiduos()"></ion-checkbox>
+                  <ion-checkbox
+                    color="success"
+                    slot="start"
+                    name="residuos"
+                    id="plasticos"
+                    value="plasticos"
+                    v-on:click="limpiarResiduos()"
+                  ></ion-checkbox>
                   <ion-label>Plásticos</ion-label>
                 </ion-item>
                 <ion-item>
-                  <ion-checkbox color="success" slot="start" name="residuos" id="vidrios" value="vidrios" v-on:click="limpiarResiduos()"></ion-checkbox>
+                  <ion-checkbox
+                    color="success"
+                    slot="start"
+                    name="residuos"
+                    id="vidrios"
+                    value="vidrios"
+                    v-on:click="limpiarResiduos()"
+                  ></ion-checkbox>
                   <ion-label>Vidrios</ion-label>
                 </ion-item>
                 <ion-item>
-                  <ion-checkbox color="success" slot="start" name="residuos" id="metales" value="metales" v-on:click="limpiarResiduos()"></ion-checkbox>
+                  <ion-checkbox
+                    color="success"
+                    slot="start"
+                    name="residuos"
+                    id="metales"
+                    value="metales"
+                    v-on:click="limpiarResiduos()"
+                  ></ion-checkbox>
                   <ion-label>Metales</ion-label>
                 </ion-item>
               </ion-list>
@@ -156,11 +191,11 @@ export default {
       }
 
       if (
-        (!document.getElementById('papeles').checked) &&
-        (!document.getElementById('cartones').checked) &&
-        (!document.getElementById('plasticos').checked) &&
-        (!document.getElementById('vidrios').checked) &&
-        (!document.getElementById('metales').checked)       
+        !document.getElementById("papeles").checked &&
+        !document.getElementById("cartones").checked &&
+        !document.getElementById("plasticos").checked &&
+        !document.getElementById("vidrios").checked &&
+        !document.getElementById("metales").checked
       ) {
         document.getElementById("residuosMsg").innerHTML =
           "Por favor, seleccioná al menos un tipo de residuo.";

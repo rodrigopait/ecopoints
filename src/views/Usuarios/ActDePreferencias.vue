@@ -86,7 +86,7 @@ import {
   IonList,
   IonItem,
   IonText,
-} from '@ionic/vue';
+} from "@ionic/vue";
 
 import {
   homeOutline,
@@ -99,10 +99,10 @@ import {
   home,
   rose,
   add,
-} from 'ionicons/icons';
+} from "ionicons/icons";
 
 export default {
-  name: 'config',
+  name: "config",
   components: {
     IonPage,
     IonHeader,

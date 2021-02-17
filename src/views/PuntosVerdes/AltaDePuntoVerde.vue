@@ -13,7 +13,9 @@
       <ion-card>
         <ion-card-header>
           <ion-text color="success">
-            <h1 class="ion-text-center"><ion-icon :icon="add" /> Alta de punto verde</h1>
+            <h1 class="ion-text-center">
+              <ion-icon :icon="add" /> Alta de punto verde
+            </h1>
           </ion-text>
           <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
           <ion-card-title></ion-card-title>
@@ -24,97 +26,99 @@
             id="altaDePuntoVerde"
             v-on:submit.prevent="altaDePuntoVerde()"
           >
-          <ion-item>
-            <ion-label color="medium" position="floating">Nombre</ion-label>
-            <ion-input
-              v-model="puntoVerdeActual.nombre"
-              type="text" name="nombre"
+            <ion-item>
+              <ion-label color="medium" position="floating">Nombre</ion-label>
+              <ion-input
+                v-model="puntoVerdeActual.nombre"
+                type="text"
+                name="nombre"
                 id="nombre"
                 v-on:click="limpiarNombre()"
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-          <ion-text id="nombreMsg" color="danger"> </ion-text>
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-text id="nombreMsg" color="danger"> </ion-text>
 
-            <ion-label color="medium" type="text" position="floating"
-              >Ubicación</ion-label
-            >
-            <ion-input
-              v-model="puntoVerdeActual.ubicacion"
-              type="text"
-              name="ubicacion"
+              <ion-label color="medium" type="text" position="floating"
+                >Ubicación</ion-label
+              >
+              <ion-input
+                v-model="puntoVerdeActual.ubicacion"
+                type="text"
+                name="ubicacion"
                 id="ubicacion"
                 v-on:click="limpiarUbicacion()"
-            ></ion-input>
-          </ion-item>
-           <ion-text id="ubicacionMsg" color="danger"> </ion-text>
+              ></ion-input>
+            </ion-item>
+            <ion-text id="ubicacionMsg" color="danger"> </ion-text>
 
-          <ion-item>
-            <ion-label color="medium" position="floating">Horarios</ion-label>
-            <ion-input
-              v-model="puntoVerdeActual.horarios"
-              type="text"
-                 name="horarios"
+            <ion-item>
+              <ion-label color="medium" position="floating">Horarios</ion-label>
+              <ion-input
+                v-model="puntoVerdeActual.horarios"
+                type="text"
+                name="horarios"
                 id="horarios"
                 v-on:click="limpiarHorarios()"
-            ></ion-input>
-          </ion-item>
-          <ion-text id="horariosMsg" color="danger"> </ion-text>
+              ></ion-input>
+            </ion-item>
+            <ion-text id="horariosMsg" color="danger"> </ion-text>
 
-          <ion-item>
-            <ion-label color="medium">Tipos de residuos que acepta:</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-list>
-              <ion-item
-                v-for="tipo in [
-                  'Papeles',
-                  'Cartones',
-                  'Plásticos',
-                  'Vidrios',
-                  'Metales',
-                ]"
-                :key="tipo"
-                :value="tipo"
-                :name="tipo"
+            <ion-item>
+              <ion-label color="medium"
+                >Tipos de residuos que acepta:</ion-label
               >
-                <ion-checkbox
-                  name = "residuos"
-                  color="success"
-                  slot="start"     
-                  :id="tipo"      
-                   v-on:click="limpiarResiduos()"
-                  @update:modelValue="agregarTipo(tipo)"
-                  :modelValue="puntoVerdeActual.tipos.includes(tipo)"
-                ></ion-checkbox>
-                <ion-label>{{ tipo }}</ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-item>
-          <ion-text id="residuosMsg" color="danger"> </ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-list>
+                <ion-item
+                  v-for="tipo in [
+                    'Papeles',
+                    'Cartones',
+                    'Plásticos',
+                    'Vidrios',
+                    'Metales',
+                  ]"
+                  :key="tipo"
+                  :value="tipo"
+                  :name="tipo"
+                >
+                  <ion-checkbox
+                    name="residuos"
+                    color="success"
+                    slot="start"
+                    :id="tipo"
+                    v-on:click="limpiarResiduos()"
+                    @update:modelValue="agregarTipo(tipo)"
+                    :modelValue="puntoVerdeActual.tipos.includes(tipo)"
+                  ></ion-checkbox>
+                  <ion-label>{{ tipo }}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-item>
+            <ion-text id="residuosMsg" color="danger"> </ion-text>
 
-          <ion-item>
-            <ion-textarea
-              type="text"
-              placeholder="Observaciones"
-                              name="observaciones"
+            <ion-item>
+              <ion-textarea
+                type="text"
+                placeholder="Observaciones"
+                name="observaciones"
                 id="observaciones"
                 v-on:click="limpiarObservaciones()"
-            ></ion-textarea>
-           
-          </ion-item>
+              ></ion-textarea>
+            </ion-item>
             <ion-text id="observacionesMsg" color="danger"> </ion-text>
 
-          <div class="ion-margin">
-             <div class="ion-text-center ion-margin">  
-            <ion-button color="success" type="submit" @click="guardarPuntoVerde"
-              >Guardar</ion-button
-            >
-            <ion-button color="primary" @click="$router.go(-1)"
-              >Cancelar</ion-button
-            >
-             </div>
-          </div>
+            <div class="ion-margin">
+              <div class="ion-text-center ion-margin">
+                <ion-button color="success" @click="guardarPuntoVerde"
+                  >Guardar</ion-button
+                >
+                <ion-button color="primary" @click="$router.go(-1)"
+                  >Cancelar</ion-button
+                >
+              </div>
+            </div>
           </form>
         </ion-card-content>
       </ion-card>
@@ -145,12 +149,10 @@ import {
   IonToolbar,
 } from "@ionic/vue";
 
-import {
- add,
-} from "ionicons/icons";
+import { add } from "ionicons/icons";
 
-import {db} from "@/db";
-import {useRouter} from "vue-router";
+import { db } from "@/db";
+import { useRouter } from "vue-router";
 
 export default {
   name: "AltaDePuntoVerde",
@@ -176,8 +178,7 @@ export default {
   },
   setup() {
     const router = useRouter();
-    return { router,add };
-    
+    return { router, add };
   },
 
   data() {
@@ -193,8 +194,7 @@ export default {
     };
   },
   methods: {
-
-      altaDePuntoVerde() {
+    altaDePuntoVerde() {
       //this.submited = true;
       if (
         document.altaDePuntoVerde.nombre.value.length > 35 ||
@@ -221,7 +221,7 @@ export default {
           "Por favor, el horario debe tener entre 5 y 35 caracteres.";
         return false;
       }
-   /*   
+      /*   
        if (!this.tipo) {
         document.getElementById("residuosMsg").innerHTML =
           "Por favor, seleccioná al menos un tipo de residuo.";
@@ -229,11 +229,11 @@ export default {
       }*/
 
       if (
-        (!document.getElementById('Papeles').checked) &&
-        (!document.getElementById('Cartones').checked) &&
-        (!document.getElementById('Plásticos').checked) &&
-        (!document.getElementById('Vidrios').checked) &&
-        (!document.getElementById('Metales').checked)       
+        !document.getElementById("Papeles").checked &&
+        !document.getElementById("Cartones").checked &&
+        !document.getElementById("Plásticos").checked &&
+        !document.getElementById("Vidrios").checked &&
+        !document.getElementById("Metales").checked
       ) {
         document.getElementById("residuosMsg").innerHTML =
           "Por favor, seleccioná al menos un tipo de residuo.";
@@ -250,17 +250,17 @@ export default {
           return false;
         } else {
           db.collection("puntosVerdes")
-              .add(this.puntoVerdeActual)
-              .then(() => {
-                this.mostrarAlerta().then(() => this.router.push("/tabs/home"));
-              });
+            .add(this.puntoVerdeActual)
+            .then(() => {
+              this.mostrarAlerta().then(() => this.router.push("/tabs/home"));
+            });
         }
-      } else {            
-            db.collection("puntosVerdes")
-              .add(this.puntoVerdeActual)
-              .then(() => {
-                this.mostrarAlerta().then(() => this.router.push("/tabs/home"));
-              });    
+      } else {
+        db.collection("puntosVerdes")
+          .add(this.puntoVerdeActual)
+          .then(() => {
+            this.mostrarAlerta().then(() => this.router.push("/tabs/home"));
+          });
       }
     },
 
@@ -283,9 +283,8 @@ export default {
       });
       return alerta.present();
     },
-  
 
-     limpiarNombre() {
+    limpiarNombre() {
       document.getElementById("nombreMsg").innerHTML = "";
     },
 
@@ -304,9 +303,6 @@ export default {
     limpiarObservaciones() {
       document.getElementById("observacionesMsg").innerHTML = "";
     },
-
-   },
-
-  };
-
+  },
+};
 </script>

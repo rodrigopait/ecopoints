@@ -76,6 +76,13 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 }
 
+.modal-wrapper {
+  border-radius: 12px;
+  bottom: 0;
+  position: absolute;
+  --height: 65%;
+}
+
 ion-icon {
   font-size: 20.5px;
 

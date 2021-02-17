@@ -20,51 +20,12 @@
         <ion-card-content>
           <!-- Listado de puntos verdes -->
           <ion-list>
-            <ion-item>
-              <ion-label>Punto verde La Plata</ion-label>
+            <ion-item v-for="punto of puntosVerdes" :key="punto.nombre" button>
+              <ion-label @click.self="mostrarDetalle(punto)">{{
+                punto.nombre
+              }}</ion-label>
               <ion-button size="small" color="">
                 <router-link to="/editarPuntoVerde">
-                  <ion-icon :icon="create" /> </router-link
-              ></ion-button>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Punto verde Centro</ion-label>
-              <ion-button size="small" color="">
-                <router-link to="/editarPuntoVerde">
-                  <ion-icon :icon="create" /> </router-link
-              ></ion-button>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label>Punto verde Parque Sicardi</ion-label>
-              <ion-button size="small" color=""
-                ><router-link to="/editarPuntoVerde">
-                  <ion-icon :icon="create" /> </router-link
-              ></ion-button>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label>Punto verde Tolosa</ion-label>
-              <ion-button size="small" color=""
-                ><router-link to="/editarPuntoVerde">
-                  <ion-icon :icon="create" /> </router-link
-              ></ion-button>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label>Punto verde Arturo Segui</ion-label>
-              <ion-button size="small" color=""
-                ><router-link to="/editarPuntoVerde">
                   <ion-icon :icon="create" /> </router-link
               ></ion-button>
               <ion-button size="small" color="">
@@ -72,6 +33,7 @@
               /></ion-button>
             </ion-item>
           </ion-list>
+
           <div class="ion-text-center ion-margin">
             <router-link
               color="success"
@@ -100,12 +62,15 @@ import {
   IonCardContent,
   IonLabel,
   IonButton,
-} from '@ionic/vue';
+  modalController,
+} from "@ionic/vue";
 
-import { leaf, create, close } from 'ionicons/icons';
+import ModalPuntoVerde from "./DetallePuntoVerde";
+
+import { leaf, create, close } from "ionicons/icons";
 
 export default {
-  name: 'Favoritos',
+  name: "Favoritos",
   components: {
     IonPage,
     IonHeader,
@@ -123,6 +88,30 @@ export default {
       create,
       close,
     };
+  },
+  data() {
+    return {
+      // ESTO TIENE QUE SER EL LISTADO TRAIDO DESDE LA DB, A FUTURO
+      puntosVerdes: [
+        { nombre: "Punto Verde La Plata" },
+        { nombre: "Punto Verde Centro" },
+        { nombre: "Punto Verde Parque Sicardi" },
+        { nombre: "Punto Verde Tolosa" },
+        { nombre: "Punto Verde Arturo Segui" },
+      ],
+    };
+  },
+  methods: {
+    async mostrarDetalle(puntoVerde) {
+      const modal = await modalController.create({
+        component: ModalPuntoVerde,
+        componentProps: {
+          // Aca va el punto verde correspondiente que fue clickeado
+          puntoVerde,
+        },
+      });
+      return modal.present();
+    },
   },
 };
 </script>

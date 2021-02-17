@@ -14,52 +14,22 @@
       <ion-card>
         <ion-text color="success">
           <h1 class="ion-text-center">
-            <ion-icon :icon="rose" /> Mis puntos favoritos
+            <ion-icon :icon="rose" />
+            Mis Puntos Verdes Favoritos
           </h1>
         </ion-text>
         <ion-card-content>
           <!-- Listado de puntos verdes -->
           <ion-list>
-            <ion-item>
-              <ion-label>Punto verde La Plata</ion-label>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label>Punto verde Villa Elisa</ion-label>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label>Punto verde City Bell</ion-label>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label>Punto verde Villa Elvira</ion-label>
-              <ion-button size="small" color="">
-                <ion-icon :icon="close"
-              /></ion-button>
-            </ion-item>
-            <ion-item>
-              <ion-label>Punto verde Ringuelet</ion-label>
+            <ion-item v-for="punto of puntosVerdes" :key="punto.nombre" button>
+              <ion-label @click.self="mostrarDetalle(punto)">
+                {{ punto.nombre }}</ion-label
+              >
               <ion-button size="small" color="">
                 <ion-icon :icon="close"
               /></ion-button>
             </ion-item>
           </ion-list>
-          <div class="ion-text-center ion-margin">
-            <router-link
-              color="success"
-              no-lines
-              to="/tabs/editarMisPreferencias"
-            >
-              <ion-button color="primary"> Volver </ion-button>
-            </router-link>
-          </div>
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -77,12 +47,15 @@ import {
   IonCardContent,
   IonLabel,
   IonButton,
-} from '@ionic/vue';
+  modalController,
+} from "@ionic/vue";
 
-import { rose, close } from 'ionicons/icons';
+import ModalPuntoVerde from "../PuntosVerdes/DetallePuntoVerde";
+
+import { rose, close } from "ionicons/icons";
 
 export default {
-  name: 'Favoritos',
+  name: "Favoritos",
   components: {
     IonPage,
     IonHeader,
@@ -99,6 +72,46 @@ export default {
       rose,
       close,
     };
+  },
+  data() {
+    return {
+      // ESTO TIENE QUE SER EL LISTADO TRAIDO DESDE LA DB, A FUTURO
+      puntosVerdes: [
+        {
+          nombre: "Punto Verde La Plata",
+          observaciones: "Observaciones del punto",
+        },
+        {
+          nombre: "Punto Verde Villa Elisa",
+          observaciones: "Observaciones del punto",
+        },
+        {
+          nombre: "Punto Verde City Bell",
+          observaciones: "Observaciones del punto",
+        },
+        {
+          nombre: "Punto Verde Villa Elvira",
+          observaciones: "Observaciones del punto",
+        },
+        {
+          nombre: "Punto Verde Ringuelet",
+          observaciones: "Observaciones del punto",
+        },
+      ],
+    };
+  },
+  methods: {
+    async mostrarDetalle(puntoVerde) {
+      const modal = await modalController.create({
+        component: ModalPuntoVerde,
+        componentProps: {
+          puntoVerde,
+          // Aca va el punto verde correspondiente que fue clickeado
+        },
+        cssClass: "punto-verde-modal",
+      });
+      return modal.present();
+    },
   },
 };
 </script>
