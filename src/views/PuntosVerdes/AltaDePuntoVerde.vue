@@ -111,7 +111,7 @@
 
             <div class="ion-margin">
               <div class="ion-text-center ion-margin">
-                <ion-button color="success" @click="guardarPuntoVerde"
+                <ion-button color="success" @click="altaDePuntoVerde"
                   >Guardar</ion-button
                 >
                 <ion-button color="primary" @click="$router.go(-1)"
