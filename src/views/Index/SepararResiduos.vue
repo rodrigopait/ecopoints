@@ -13,6 +13,27 @@
       <h3></h3>
       <ion-card>
         <img src="assets/img/cestos.jpg" alt="Imagen de cestos de basura" />
+        <h4>Tamaño de la fuente:
+          <select id="valor" v-on:change="CambioTexto()">
+            <option>Elegí un tamaño</option>
+            <option>10</option>        
+            <option>20</option> 
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+          </select>
+        </h4>  
+
+       <ion-item>
+          <ion-label>Tamaño de la fuente</ion-label>
+          <ion-select :interface-options="customAlertOptions" interface="alert" id="valor" v-on:change="CambioTexto()" multiple="false" placeholder="Selecciona un tamaño">
+            <ion-select-option :value="10">10</ion-select-option>
+            <ion-select-option :value="20">20</ion-select-option>
+            <ion-select-option :value="30">30</ion-select-option> 
+            <ion-select-option :value="40">40</ion-select-option> 
+            <ion-select-option :value="50">50</ion-select-option> 
+          </ion-select>
+        </ion-item>
 
         <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
         <ion-text color="success">
@@ -88,17 +109,45 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import {
   IonPage,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
+  IonSelect,
+  IonSelectOption
 } from "@ionic/vue";
 
 export default {
   name: "SepararResiduos",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage,  IonSelect, IonSelectOption },
+
+   methods: {
+
+      CambioTexto(){
+        const card=document.getElementsByTagName("ion-card-content");
+        const h5=document.getElementsByTagName("h5");
+        const select=document.getElementById("valor");
+        let i;
+        for ( i = 0; i < card.length; i++){
+          if (select.options[select.selectedIndex].text=="Elegí un tamaño"){
+            return false
+          }
+          card[i].style.fontSize=select.options[select.selectedIndex].text+"px";
+          card[i].style.fontFamily="Arial";
+          
+        }
+        for ( i = 0; i < h5.length; i++){
+          if (select.options[select.selectedIndex].text=="Elegí un tamaño"){
+            return false
+          }
+          h5[i].style.fontSize=select.options[select.selectedIndex].text+"px";
+          h5[i].style.fontFamily="Arial";
+          
+        }
+    }
+  },
 };
 </script>
