@@ -75,12 +75,15 @@
                   'Metales',
                 ]"
                 :key="tipo"
-                
+                :value="tipo"
+                :name="tipo"
               >
                 <ion-checkbox
                   name = "residuos"
                   color="success"
-                  slot="start"                 
+                  slot="start"     
+                  :id="tipo"      
+                   v-on:click="limpiarResiduos()"
                   @update:modelValue="agregarTipo(tipo)"
                   :modelValue="puntoVerdeActual.tipos.includes(tipo)"
                 ></ion-checkbox>
@@ -218,19 +221,25 @@ export default {
           "Por favor, el horario debe tener entre 5 y 35 caracteres.";
         return false;
       }
-/*
+   /*   
+       if (!this.tipo) {
+        document.getElementById("residuosMsg").innerHTML =
+          "Por favor, seleccioná al menos un tipo de residuo.";
+        return false;
+      }*/
+
       if (
-        (!document.getElementById('ion-cb-0').checked) &&
-        (!document.getElementById('ion-cb-1').checked) &&
-        (!document.getElementById('ion-cb-2').checked) &&
-        (!document.getElementById('ion-cb-3').checked) &&
-        (!document.getElementById('ion-cb-4').checked)       
+        (!document.getElementById('Papeles').checked) &&
+        (!document.getElementById('Cartones').checked) &&
+        (!document.getElementById('Plásticos').checked) &&
+        (!document.getElementById('Vidrios').checked) &&
+        (!document.getElementById('Metales').checked)       
       ) {
         document.getElementById("residuosMsg").innerHTML =
           "Por favor, seleccioná al menos un tipo de residuo.";
         return false;
       }
-*/
+
       if (document.altaDePuntoVerde.observaciones.value.length != 0) {
         if (
           document.altaDePuntoVerde.observaciones.value.length > 120 ||
