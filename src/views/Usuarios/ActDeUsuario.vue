@@ -53,13 +53,23 @@
 
             <ion-item>
               <ion-label color="medium" position="floating">DNI</ion-label>
-              <ion-input type="text" name="dni" id="dni" v-on:click="limpiarDNI()"></ion-input>
+              <ion-input
+                type="text"
+                name="dni"
+                id="dni"
+                v-on:click="limpiarDNI()"
+              ></ion-input>
             </ion-item>
             <ion-text id="dniMsg" color="danger"> </ion-text>
 
             <ion-item>
               <ion-label color="medium" position="floating">Mail</ion-label>
-              <ion-input type="text" name="mail" id="dni" v-on:click="limpiarMail()"></ion-input>
+              <ion-input
+                type="mail"
+                name="mail"
+                id="dni"
+                v-on:click="limpiarMail()"
+              ></ion-input>
             </ion-item>
             <ion-text id="mailMsg" color="danger"> </ion-text>
 
@@ -71,7 +81,7 @@
                 type="password"
                 name="password"
                 id="password"
-               v-on:click="limpiarPassword()"
+                v-on:click="limpiarPassword()"
               ></ion-input>
             </ion-item>
             <ion-text id="passwordMsg" color="danger"> </ion-text>
@@ -79,10 +89,17 @@
             <div class="ion-margin ion-text-center">
               <ion-button color="success" type="submit">Actualizar</ion-button>
 
-              <router-link color="success" no-lines to="/editarMisPreferencias">
-                <ion-button color="primary"> Cancelar </ion-button>
+              <router-link
+                color="success"
+                no-lines
+                to="/tabs/editarMisPreferencias"
+              >
+                <ion-button color="primary">
+                  Cancelar
+                </ion-button>
               </router-link>
-            </div>           
+            </div>
+            <ion-button @click="openToast">Open Toast</ion-button>
           </form>
         </ion-card-content>
       </ion-card>
@@ -90,7 +107,7 @@
   </ion-page>
 </template>
 
-<script  >
+<script>
 //lang="ts"
 
 import {
@@ -99,23 +116,24 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-} from "@ionic/vue";
+  IonToast,
+} from '@ionic/vue';
 
-import { person } from "ionicons/icons";
+import { person } from 'ionicons/icons';
 
-import { required, minLength } from "vuelidate/lib/validators";
+import { required, minLength } from 'vuelidate/lib/validators';
 
 export default {
-  name: "ActDeUsuario",
+  name: 'ActDeUsuario',
   data() {
     return {
       submited: false,
       contacto: {
-        nombre: "",
-        apellido: "",
-        dni: "",
-        mail: "",
-        password: "",
+        nombre: '',
+        apellido: '',
+        dni: '',
+        mail: '',
+        password: '',
       },
     };
   },
@@ -128,72 +146,88 @@ export default {
 
   methods: {
     actualizarUsuario() {
-      //this.submited = true;            
-      if (document.actDeUsuario.nombre.value.length > 35 ||
+      //this.submited = true;
+      if (
+        document.actDeUsuario.nombre.value.length > 35 ||
         document.actDeUsuario.nombre.value.length == 0 ||
-        document.actDeUsuario.nombre.value.length < 2) {
-        document.getElementById("nombreMsg").innerHTML="Por favor, tu nombre debe tener entre 2 y 35 caracteres.";
+        document.actDeUsuario.nombre.value.length < 2
+      ) {
+        document.getElementById('nombreMsg').innerHTML =
+          'Por favor, tu nombre debe tener entre 2 y 35 caracteres.';
         return false;
-     }
-
-      if (document.actDeUsuario.apellido.value.length > 20 ||
-          document.actDeUsuario.apellido.value.length == 0 ||
-          document.actDeUsuario.apellido.value.length < 2) {
-          document.getElementById("apellidoMsg").innerHTML="Por favor, tu apellido debe tener entre 2 y 20 caracteres.";
-          return false;
       }
 
-      if (document.actDeUsuario.dni.value.length > 20 ||
-          document.actDeUsuario.dni.value.length == 0 ||
-          document.actDeUsuario.dni.value.length < 7 ) {
-          document.getElementById("dniMsg").innerHTML="Por favor, tu dni debe tener entre 7 y 20 caracteres.";
-          return false;
+      if (
+        document.actDeUsuario.apellido.value.length > 20 ||
+        document.actDeUsuario.apellido.value.length == 0 ||
+        document.actDeUsuario.apellido.value.length < 2
+      ) {
+        document.getElementById('apellidoMsg').innerHTML =
+          'Por favor, tu apellido debe tener entre 2 y 20 caracteres.';
+        return false;
+      }
+
+      if (
+        document.actDeUsuario.dni.value.length > 20 ||
+        document.actDeUsuario.dni.value.length == 0 ||
+        document.actDeUsuario.dni.value.length < 7
+      ) {
+        document.getElementById('dniMsg').innerHTML =
+          'Por favor, tu dni debe tener entre 7 y 20 caracteres.';
+        return false;
       }
 
       if (!/^[0-9]+$/.test(document.actDeUsuario.dni.value)) {
-          document.getElementById("dniMsg").innerHTML="Por favor, tu dni sólo puede contener números.";
-          return false;
+        document.getElementById('dniMsg').innerHTML =
+          'Por favor, tu dni sólo puede contener números.';
+        return false;
       }
 
-      if (document.actDeUsuario.mail.value.length > 30 ||
-          document.actDeUsuario.mail.value.length == 0 ||
-          document.actDeUsuario.mail.value.length < 5) {
-          document.getElementById("mailMsg").innerHTML="Por favor, tu mail debe tener entre 5 y 30 caracteres.";
-          return false;
+      if (
+        document.actDeUsuario.mail.value.length > 30 ||
+        document.actDeUsuario.mail.value.length == 0 ||
+        document.actDeUsuario.mail.value.length < 5
+      ) {
+        document.getElementById('mailMsg').innerHTML =
+          'Por favor, tu mail debe tener entre 5 y 30 caracteres.';
+        return false;
       }
 
-      if (!(/\S+@\S+\.\S+/.test(document.actDeUsuario.mail.value))) {
-          document.getElementById("mailMsg").innerHTML="Por favor, ingresá tu email con el formato mimail@dominio.com.";   
-          return false;
+      if (!/\S+@\S+\.\S+/.test(document.actDeUsuario.mail.value)) {
+        document.getElementById('mailMsg').innerHTML =
+          'Por favor, ingresá tu email con el formato mimail@dominio.com.';
+        return false;
       }
 
-      if (document.actDeUsuario.password.value.length > 30 ||
-          document.actDeUsuario.password.value.length == 0 ||
-          document.actDeUsuario.password.value.length < 10) {
-          document.getElementById("passwordMsg").innerHTML="Por favor, tu contraseña debe tener entre 10 y 30 caracteres.";
-          return false;
+      if (
+        document.actDeUsuario.password.value.length > 30 ||
+        document.actDeUsuario.password.value.length == 0 ||
+        document.actDeUsuario.password.value.length < 10
+      ) {
+        document.getElementById('passwordMsg').innerHTML =
+          'Por favor, tu contraseña debe tener entre 10 y 30 caracteres.';
+        return false;
       }
-
     },
 
     limpiarNombre() {
-      document.getElementById("nombreMsg").innerHTML = "";
+      document.getElementById('nombreMsg').innerHTML = '';
     },
 
     limpiarApellido() {
-      document.getElementById("apellidoMsg").innerHTML = "";
+      document.getElementById('apellidoMsg').innerHTML = '';
     },
 
     limpiarDNI() {
-      document.getElementById("dniMsg").innerHTML = "";
+      document.getElementById('dniMsg').innerHTML = '';
     },
 
     limpiarMail() {
-      document.getElementById("mailMsg").innerHTML = "";
+      document.getElementById('mailMsg').innerHTML = '';
     },
 
     limpiarPassword() {
-      document.getElementById("passwordMsg").innerHTML = "";
+      document.getElementById('passwordMsg').innerHTML = '';
     },
 
     validations: {

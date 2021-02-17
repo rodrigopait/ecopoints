@@ -22,44 +22,47 @@
         <ion-card-content>
           <!-- Listado de puntos verdes -->
 
-          <ion-list>      
+          <ion-list>
             <ion-item>
               <ion-icon :icon="person" />
               <router-link to="/editarMiPerfil">
                 <ion-label color="dark" class="ion-margin"
-                  >Actualizar mi perfil</ion-label>
+                  >Actualizar mi perfil</ion-label
+                >
               </router-link>
             </ion-item>
 
             <ion-item>
-             <ion-icon :icon="rose" />
-              <router-link to="/favoritos">
+              <ion-icon :icon="rose" />
+              <router-link to="/tabs/favoritos">
                 <ion-label color="dark" class="ion-margin"
-                  >Puntos verdes favoritos</ion-label>
+                  >Puntos verdes favoritos</ion-label
+                >
               </router-link>
             </ion-item>
 
-             <ion-item>
-             <ion-icon :icon="add" />
+            <ion-item>
+              <ion-icon :icon="add" />
               <router-link to="/altaDePuntoVerde">
                 <ion-label color="dark" class="ion-margin"
-                  >Alta de punto verde</ion-label>
-              </router-link>
-            </ion-item>
-
-             <ion-item>
-             <ion-icon :icon="leaf" />
-              <router-link to="/listadoDePuntosVerdes">
-                <ion-label color="dark" class="ion-margin"
-                  >Puntos verdes registrados</ion-label>
+                  >Alta de punto verde</ion-label
+                >
               </router-link>
             </ion-item>
 
             <ion-item>
-             <ion-icon :icon="home" />
-              <router-link to="/">
+              <ion-icon :icon="leaf" />
+              <router-link to="/listadoDePuntosVerdes">
                 <ion-label color="dark" class="ion-margin"
-                  >Inicio</ion-label>
+                  >Puntos verdes registrados</ion-label
+                >
+              </router-link>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon :icon="home" />
+              <router-link to="/">
+                <ion-label color="dark" class="ion-margin">Inicio</ion-label>
               </router-link>
             </ion-item>
           </ion-list>
@@ -80,7 +83,10 @@ import {
   IonCardContent,
   IonLabel,
   IonIcon,
-} from "@ionic/vue";
+  IonList,
+  IonItem,
+  IonText,
+} from '@ionic/vue';
 
 import {
   homeOutline,
@@ -93,10 +99,10 @@ import {
   home,
   rose,
   add,
-} from "ionicons/icons";
+} from 'ionicons/icons';
 
 export default {
-  name: "Favoritos",
+  name: 'config',
   components: {
     IonPage,
     IonHeader,
@@ -107,6 +113,9 @@ export default {
     IonCardContent,
     IonLabel,
     IonIcon,
+    IonList,
+    IonItem,
+    IonText,
   },
   setup() {
     return {

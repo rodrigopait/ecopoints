@@ -52,7 +52,11 @@
             </ion-item>
           </ion-list>
           <div class="ion-text-center ion-margin">
-            <router-link color="success" no-lines to="/editarMisPreferencias">
+            <router-link
+              color="success"
+              no-lines
+              to="/tabs/editarMisPreferencias"
+            >
               <ion-button color="primary"> Volver </ion-button>
             </router-link>
           </div>
@@ -73,12 +77,12 @@ import {
   IonCardContent,
   IonLabel,
   IonButton,
-} from "@ionic/vue";
+} from '@ionic/vue';
 
-import { rose, close } from "ionicons/icons";
+import { rose, close } from 'ionicons/icons';
 
 export default {
-  name: "Favoritos",
+  name: 'Favoritos',
   components: {
     IonPage,
     IonHeader,

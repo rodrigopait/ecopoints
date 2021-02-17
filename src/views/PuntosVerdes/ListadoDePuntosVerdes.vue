@@ -13,44 +13,75 @@
 
       <ion-card>
         <ion-text color="success">
-          <h1 class="ion-text-center"><ion-icon :icon="leaf" /> Puntos verdes registrados</h1>
+          <h1 class="ion-text-center">
+            <ion-icon :icon="leaf" /> Puntos verdes registrados
+          </h1>
         </ion-text>
         <ion-card-content>
           <!-- Listado de puntos verdes -->
           <ion-list>
             <ion-item>
               <ion-label>Punto verde La Plata</ion-label>
-              <ion-button size="small" color=""> <router-link to="/editarPuntoVerde"> <ion-icon :icon="create" />  </router-link></ion-button>
-              <ion-button size="small" color=""> <ion-icon :icon="close" /></ion-button>
+              <ion-button size="small" color="">
+                <router-link to="/editarPuntoVerde">
+                  <ion-icon :icon="create" /> </router-link
+              ></ion-button>
+              <ion-button size="small" color="">
+                <ion-icon :icon="close"
+              /></ion-button>
             </ion-item>
 
             <ion-item>
               <ion-label>Punto verde Centro</ion-label>
-              <ion-button size="small" color=""> <router-link to="/editarPuntoVerde"> <ion-icon :icon="create" /> </router-link></ion-button>
-              <ion-button size="small" color=""> <ion-icon :icon="close" /></ion-button>
+              <ion-button size="small" color="">
+                <router-link to="/editarPuntoVerde">
+                  <ion-icon :icon="create" /> </router-link
+              ></ion-button>
+              <ion-button size="small" color="">
+                <ion-icon :icon="close"
+              /></ion-button>
             </ion-item>
             <ion-item>
               <ion-label>Punto verde Parque Sicardi</ion-label>
-              <ion-button size="small" color=""><router-link to="/editarPuntoVerde"> <ion-icon :icon="create" /> </router-link></ion-button>
-              <ion-button size="small" color=""> <ion-icon :icon="close" /></ion-button>        
+              <ion-button size="small" color=""
+                ><router-link to="/editarPuntoVerde">
+                  <ion-icon :icon="create" /> </router-link
+              ></ion-button>
+              <ion-button size="small" color="">
+                <ion-icon :icon="close"
+              /></ion-button>
             </ion-item>
             <ion-item>
               <ion-label>Punto verde Tolosa</ion-label>
-                <ion-button size="small" color=""><router-link to="/editarPuntoVerde"> <ion-icon :icon="create" /> </router-link></ion-button>
-              <ion-button size="small" color=""> <ion-icon :icon="close" /></ion-button>
+              <ion-button size="small" color=""
+                ><router-link to="/editarPuntoVerde">
+                  <ion-icon :icon="create" /> </router-link
+              ></ion-button>
+              <ion-button size="small" color="">
+                <ion-icon :icon="close"
+              /></ion-button>
             </ion-item>
             <ion-item>
               <ion-label>Punto verde Arturo Segui</ion-label>
-               <ion-button size="small" color=""><router-link to="/editarPuntoVerde"> <ion-icon :icon="create" /> </router-link></ion-button>
-              <ion-button size="small" color=""> <ion-icon :icon="close" /></ion-button>
+              <ion-button size="small" color=""
+                ><router-link to="/editarPuntoVerde">
+                  <ion-icon :icon="create" /> </router-link
+              ></ion-button>
+              <ion-button size="small" color="">
+                <ion-icon :icon="close"
+              /></ion-button>
             </ion-item>
           </ion-list>
-           <div class="ion-text-center ion-margin">
-            <router-link color="success" no-lines to="/editarMisPreferencias">
+          <div class="ion-text-center ion-margin">
+            <router-link
+              color="success"
+              no-lines
+              to="/tabs/editarMisPreferencias"
+            >
               <ion-button color="primary">
                 Volver
-              </ion-button>          
-          </router-link>
+              </ion-button>
+            </router-link>
           </div>
         </ion-card-content>
       </ion-card>
@@ -69,18 +100,12 @@ import {
   IonCardContent,
   IonLabel,
   IonButton,
-} from "@ionic/vue";
+} from '@ionic/vue';
 
-
-import {
- leaf,
- create,
- close,
-} from "ionicons/icons";
-
+import { leaf, create, close } from 'ionicons/icons';
 
 export default {
-  name: "Favoritos",
+  name: 'Favoritos',
   components: {
     IonPage,
     IonHeader,
@@ -92,14 +117,12 @@ export default {
     IonLabel,
     IonButton,
   },
-setup() {
+  setup() {
     return {
       leaf,
       create,
       close,
     };
   },
-  
 };
-
 </script>

@@ -19,29 +19,48 @@
           <ion-card-title></ion-card-title>
         </ion-card-header>
         <ion-card-content>
+          <form
+            name="altaDePuntoVerde"
+            id="altaDePuntoVerde"
+            v-on:submit.prevent="altaDePuntoVerde()"
+          >
           <ion-item>
             <ion-label color="medium" position="floating">Nombre</ion-label>
             <ion-input
               v-model="puntoVerdeActual.nombre"
-              type="text"
+              type="text" name="nombre"
+                id="nombre"
+                v-on:click="limpiarNombre()"
             ></ion-input>
           </ion-item>
           <ion-item>
+          <ion-text id="nombreMsg" color="danger"> </ion-text>
+
             <ion-label color="medium" type="text" position="floating"
               >Ubicación</ion-label
             >
             <ion-input
               v-model="puntoVerdeActual.ubicacion"
               type="text"
+              name="ubicacion"
+                id="ubicacion"
+                v-on:click="limpiarUbicacion()"
             ></ion-input>
           </ion-item>
+           <ion-text id="ubicacionMsg" color="danger"> </ion-text>
+
           <ion-item>
             <ion-label color="medium" position="floating">Horarios</ion-label>
             <ion-input
               v-model="puntoVerdeActual.horarios"
               type="text"
+                 name="horarios"
+                id="horarios"
+                v-on:click="limpiarHorarios()"
             ></ion-input>
           </ion-item>
+          <ion-text id="horariosMsg" color="danger"> </ion-text>
+
           <ion-item>
             <ion-label color="medium">Tipos de residuos que acepta:</ion-label>
           </ion-item>
@@ -56,10 +75,12 @@
                   'Metales',
                 ]"
                 :key="tipo"
+                
               >
                 <ion-checkbox
+                  name = "residuos"
                   color="success"
-                  slot="start"
+                  slot="start"                 
                   @update:modelValue="agregarTipo(tipo)"
                   :modelValue="puntoVerdeActual.tipos.includes(tipo)"
                 ></ion-checkbox>
@@ -67,15 +88,23 @@
               </ion-item>
             </ion-list>
           </ion-item>
+          <ion-text id="residuosMsg" color="danger"> </ion-text>
+
           <ion-item>
             <ion-textarea
               type="text"
               placeholder="Observaciones"
+                              name="observaciones"
+                id="observaciones"
+                v-on:click="limpiarObservaciones()"
             ></ion-textarea>
+           
           </ion-item>
+            <ion-text id="observacionesMsg" color="danger"> </ion-text>
+
           <div class="ion-margin">
              <div class="ion-text-center ion-margin">  
-            <ion-button color="success" @click="guardarPuntoVerde"
+            <ion-button color="success" type="submit" @click="guardarPuntoVerde"
               >Guardar</ion-button
             >
             <ion-button color="primary" @click="$router.go(-1)"
@@ -83,6 +112,7 @@
             >
              </div>
           </div>
+          </form>
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -160,6 +190,71 @@ export default {
     };
   },
   methods: {
+
+      altaDePuntoVerde() {
+      //this.submited = true;
+      if (
+        document.altaDePuntoVerde.nombre.value.length > 35 ||
+        document.altaDePuntoVerde.nombre.value.length == 0 ||
+        document.altaDePuntoVerde.nombre.value.length < 2
+      ) {
+        document.getElementById("nombreMsg").innerHTML =
+          "Por favor, el nombre debe tener entre 2 y 35 caracteres.";
+        return false;
+      }
+
+      if (document.altaDePuntoVerde.ubicacion.value.length == 0) {
+        document.getElementById("ubicacionMsg").innerHTML =
+          "Por favor, ingresá una ubicación.";
+        return false;
+      }
+
+      if (
+        document.altaDePuntoVerde.horarios.value.length > 35 ||
+        document.altaDePuntoVerde.horarios.value.length == 0 ||
+        document.altaDePuntoVerde.horarios.value.length < 5
+      ) {
+        document.getElementById("horariosMsg").innerHTML =
+          "Por favor, el horario debe tener entre 5 y 35 caracteres.";
+        return false;
+      }
+/*
+      if (
+        (!document.getElementById('ion-cb-0').checked) &&
+        (!document.getElementById('ion-cb-1').checked) &&
+        (!document.getElementById('ion-cb-2').checked) &&
+        (!document.getElementById('ion-cb-3').checked) &&
+        (!document.getElementById('ion-cb-4').checked)       
+      ) {
+        document.getElementById("residuosMsg").innerHTML =
+          "Por favor, seleccioná al menos un tipo de residuo.";
+        return false;
+      }
+*/
+      if (document.altaDePuntoVerde.observaciones.value.length != 0) {
+        if (
+          document.altaDePuntoVerde.observaciones.value.length > 120 ||
+          document.altaDePuntoVerde.observaciones.value.length < 5
+        ) {
+          document.getElementById("observacionesMsg").innerHTML =
+            "Por favor, las observaciones deben tener entre 5 y 120 caracteres.";
+          return false;
+        } else {
+          db.collection("puntosVerdes")
+              .add(this.puntoVerdeActual)
+              .then(() => {
+                this.mostrarAlerta().then(() => this.router.push("/tabs/home"));
+              });
+        }
+      } else {            
+            db.collection("puntosVerdes")
+              .add(this.puntoVerdeActual)
+              .then(() => {
+                this.mostrarAlerta().then(() => this.router.push("/tabs/home"));
+              });    
+      }
+    },
+
     agregarTipo(tipo) {
       if (this.puntoVerdeActual.tipos.includes(tipo)) {
         const index = this.puntoVerdeActual.tipos.indexOf(tipo);
@@ -169,13 +264,7 @@ export default {
       }
       console.log(this.puntoVerdeActual.tipos);
     },
-    guardarPuntoVerde() {
-      db.collection("puntosVerdes")
-        .add(this.puntoVerdeActual)
-        .then(() => {
-          this.mostrarAlerta().then(() => this.router.push("/tabs/home"));
-        });
-    },
+
     async mostrarAlerta() {
       const alerta = await alertController.create({
         header: "Punto verde creado",
@@ -185,6 +274,30 @@ export default {
       });
       return alerta.present();
     },
-  },
-};
+  
+
+     limpiarNombre() {
+      document.getElementById("nombreMsg").innerHTML = "";
+    },
+
+    limpiarUbicacion() {
+      document.getElementById("ubicacionMsg").innerHTML = "";
+    },
+
+    limpiarHorarios() {
+      document.getElementById("horariosMsg").innerHTML = "";
+    },
+
+    limpiarResiduos() {
+      document.getElementById("residuosMsg").innerHTML = "";
+    },
+
+    limpiarObservaciones() {
+      document.getElementById("observacionesMsg").innerHTML = "";
+    },
+
+   },
+
+  };
+
 </script>

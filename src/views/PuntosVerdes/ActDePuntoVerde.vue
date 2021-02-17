@@ -126,6 +126,7 @@ import {
 export default {
   name: "ActDePuntoVerde",
   methods: {
+    
     actualizarPuntoVerde() {
       //this.submited = true;
       if (
