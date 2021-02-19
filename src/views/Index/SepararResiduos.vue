@@ -13,7 +13,22 @@
       <h3></h3>
       <ion-card>
         <img src="assets/img/cestos.jpg" alt="Imagen de cestos de basura" />
-        <h4>Tamaño de la fuente:
+          <ion-button color="success"   @click="cambiarTema()"
+                >Cambiar tema</ion-button
+              >
+   
+
+        <h4 class="ion-margin">Color de la fuente:
+          <select id="valor2" v-on:change="cambiarColor()">
+            <option>Elegí un color</option>
+            <option value="#ffffff">Blanco</option>        
+            <option value="#737373">Gris</option> 
+            <option value="#5083BA">Celeste</option>
+            <option value="#C93434">Rojo</option>        
+          </select>
+        </h4>  
+
+        <h4 class="ion-margin">Tamaño de la fuente:
           <select id="valor" v-on:change="CambioTexto()">
             <option>Elegí un tamaño</option>
             <option>10</option>        
@@ -24,7 +39,19 @@
           </select>
         </h4>  
 
-       <ion-item>
+        <h4 class="ion-margin">Separacion de la fuente:
+          <select id="valorFuente" v-on:change="separarFuente()">
+            <option>Elegí un tamaño</option>
+            <option>0</option>  
+            <option>0.1</option>        
+            <option>0.2</option> 
+            <option>0.3</option>
+            <option>0.4</option>
+            <option>0.5</option>
+          </select>
+        </h4>  
+
+       <ion-item id="tema">
           <ion-label>Tamaño de la fuente</ion-label>
           <ion-select :interface-options="customAlertOptions" interface="alert" id="valor" v-on:change="CambioTexto()" multiple="false" placeholder="Selecciona un tamaño">
             <ion-select-option :value="10">10</ion-select-option>
@@ -117,12 +144,13 @@ import {
   IonTitle,
   IonContent,
   IonSelect,
-  IonSelectOption
+  IonSelectOption,
+  IonButton,
 } from "@ionic/vue";
 
 export default {
   name: "SepararResiduos",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage,  IonSelect, IonSelectOption },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage,  IonSelect, IonSelectOption,  IonButton, },
 
    methods: {
 
@@ -147,7 +175,39 @@ export default {
           h5[i].style.fontFamily="Arial";
           
         }
-    }
+    }, 
+
+    cambiarColor(){
+        //  document.style.backgroundColor = "#0000FF";
+         //  document.getElementsByTagName("ion-card").style.webkitFilter = "#0000FF";
+        const card=document.getElementsByTagName("ion-card-content");
+        const h5=document.getElementsByTagName("h5");
+        const select=document.getElementById("valor2");
+        let i;
+        for ( i = 0; i < card.length; i++){
+          if (select.options[select.selectedIndex].text=="Elegí un color"){
+            return false
+          }
+          card[i].style.color=select.options[select.selectedIndex].value;
+        //  card[i].style.fontFamily="Arial";
+          
+        }
+        for ( i = 0; i < h5.length; i++){
+          if (select.options[select.selectedIndex].text=="Elegí un color"){
+            return false
+          }
+          h5[i].style.color=select.options[select.selectedIndex].value;
+        //  h5[i].style.fontFamily="Arial";        
+        }
+    },
+     
+      separarFuente() {
+            let select = 0;
+             select=document.getElementById("valorFuente");           
+            document.body.style.letterSpacing=select.options[select.selectedIndex].text+"em";
+      },
+
   },
 };
 </script>
+

@@ -155,6 +155,7 @@ components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
 
 body {
   font-size: calc(var(--font-size) * 1em);
+   
 }
 
 .font-controls {
@@ -163,6 +164,7 @@ body {
   left: 0.5em;
   display: flex;
   font-size: 1.5em;
+  
 }
 
 .font-control {
@@ -170,5 +172,6 @@ body {
   padding: 0.25em;
   border: 1px solid #000;
   cursor: pointer;
+ 
 }
 </style>
