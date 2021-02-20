@@ -99,7 +99,6 @@
                 </ion-button>
               </router-link>
             </div>
-            <ion-button @click="openToast">Open Toast</ion-button>
           </form>
         </ion-card-content>
       </ion-card>

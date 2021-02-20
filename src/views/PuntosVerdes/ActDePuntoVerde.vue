@@ -13,7 +13,7 @@
       <ion-card>
         <ion-card-header>
           <ion-text color="success">
-            <h1 class="ion-text-center">Actualizar punto verde</h1>
+            <h1 class="ion-text-center"><ion-icon :icon="create"/> Actualizar punto verde</h1>
           </ion-text>
           <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
           <ion-card-title></ion-card-title>
@@ -158,6 +158,8 @@ import {
   IonContent,
 } from "@ionic/vue";
 
+import { create } from "ionicons/icons";
+
 export default {
   name: "ActDePuntoVerde",
   methods: {
@@ -236,5 +238,10 @@ export default {
   },
 
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  setup() {
+    return {      
+      create,
+    };
+  },
 };
 </script>

@@ -48,13 +48,22 @@
                   >Alta de punto verde</ion-label
                 >
               </router-link>
-            </ion-item>
+            </ion-item>           
 
             <ion-item>
               <ion-icon :icon="leaf" />
               <router-link to="/listadoDePuntosVerdes">
                 <ion-label color="dark" class="ion-margin"
                   >Puntos verdes registrados</ion-label
+                >
+              </router-link>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon :icon="walk" />
+              <router-link to="/tabs/accesibilidad">
+                <ion-label color="dark" class="ion-margin"
+                  >Accesibilidad</ion-label
                 >
               </router-link>
             </ion-item>
@@ -99,6 +108,7 @@ import {
   home,
   rose,
   add,
+  walk,
 } from "ionicons/icons";
 
 export default {
@@ -129,6 +139,7 @@ export default {
       home,
       rose,
       add,
+      walk,
     };
   },
 };

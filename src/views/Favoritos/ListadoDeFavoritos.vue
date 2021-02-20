@@ -30,6 +30,17 @@
               /></ion-button>
             </ion-item>
           </ion-list>
+          <div class="ion-text-center ion-margin">
+            <router-link
+              color="success"
+              no-lines
+              to="/tabs/editarMisPreferencias"
+            >
+              <ion-button color="primary">
+                Volver
+              </ion-button>
+            </router-link>
+          </div>
         </ion-card-content>
       </ion-card>
     </ion-content>

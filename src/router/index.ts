@@ -50,6 +50,11 @@ const routes = [
         name: 'EditarMisPreferencias',
         component: () => import('@/views/Usuarios/ActDePreferencias.vue'),
       },
+      {
+        path: 'accesibilidad',
+        name: 'Accesibilidad',
+        component: () => import('@/views/Usuarios/Accesibilidad.vue'),
+      },
     ],
   },
   {
