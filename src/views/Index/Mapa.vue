@@ -39,7 +39,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script>
 import {
   IonPage,
   IonHeader,
@@ -66,6 +66,14 @@ export default {
     IonCardContent,
     IonCard,
     IonButton,
+  },
+  mounted() {
+    const fontSize = window.localStorage.getItem("fontSize");
+    const elems = document.getElementsByTagName("*");
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].style.fontSize = fontSize;
+      console.log(elems[i].style.fontSize);
+    }
   },
 };
 </script>
