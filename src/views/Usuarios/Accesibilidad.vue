@@ -139,10 +139,14 @@ export default {
       },
 
       tamañoFuente() {
-           let select = 0;
-           select=document.getElementById("selectTamañoFuente");
-           alert(select.options[select.selectedIndex].text+"em");
-            //document.body.style.fontSize=select.options[select.selectedIndex].text+"em"; 
+          // let select = 0;
+         //  select=document.getElementById("selectTamañoFuente");
+        // const body = document.getElementsByTagName('body')[0];
+
+          //body.setAttribute('style',`font-size: ${fontsize}rem`);
+         // document.body.style.fontSize=select.options[select.selectedIndex].text+"em";
+          // alert(select.options[select.selectedIndex].text+"em");
+          //document.body.style.fontSize=select.options[select.selectedIndex].text+"em"; 
          //   document.body.style.color='#ffffff';
           //  alert(document.body.style.backgoundcolor='#ffffff');
            //const tamañoFuente= select.options[select.selectedIndex].text;
@@ -150,7 +154,7 @@ export default {
           // alert(getComputedStyle(document.body).getPropertyValue('font-size'));  // tamaño actual de la fuente
           //document.documentElement.style.setProperty('--font-size', `${tamañoFuente * 0.9}`)
        
-          //this.document.getElementsByTagName("h5").setAttribute("size","2");
+          //  this.document.getElementsByTagName('h5').setAttribute("size","2");
          //  document.body.style.fontsize(85+'px');
          // document.body.style.fontsize=tamañoFuente+'px';
            //const x = document.getElementsByClassName("ion-text-center");
@@ -158,19 +162,19 @@ export default {
        // document.getElementsByTagName("body")[0].style.fontsize=tamañoFuente+"px";
        // document.body.setAttribute('style', 'font-family:Arial !important');
          //document.body.style.color="#cf3c4f";
-/*
-          const card=document.getElementsByTagName("ion-content");
+
+        const h5=document.getElementsByTagName("*");
       
         const select=document.getElementById("selectTamañoFuente");
         let i;
-        for ( i = 0; i < card.length; i++){
+        for ( i = 0; i < h5.length; i++){
           if (select.options[select.selectedIndex].text=="Elegí un tamaño"){
             return false
           }
-          card[i].style.fontSize=select.options[select.selectedIndex].text+"px";
+          h5[i].style.fontSize=select.options[select.selectedIndex].text+"px";
       //    card[i].style.fontFamily="Arial";
           
-        } */
+        } 
     
       }
 
