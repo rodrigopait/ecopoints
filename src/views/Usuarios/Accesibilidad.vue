@@ -22,9 +22,13 @@
           <ion-card-title></ion-card-title>
         </ion-card-header>
 
-        <p class="ion-margin">
+        <p class="ion-margin success">
           Separación de la fuente:
-          <select id="selectSepararFuente" v-on:change="separarFuente()">
+          <select
+            id="selectSepararFuente"
+            class="content-select"
+            v-on:change="separarFuente()"
+          >
             <option>Elegí un tamaño</option>
             <option>0</option>
             <option>0.1</option>
@@ -35,30 +39,40 @@
           </select>
         </p>
 
-        <ion-item>
-          <ion-label>Separación de la fuente</ion-label>
-          <ion-select
-            id="selectSepararFuente"
-            v-on:change="separarFuente()"
-            placeholder="Elegí un tamaño"
-          >
-            <ion-select-option value="0">0</ion-select-option>
-            <ion-select-option value="0.1">0.1</ion-select-option>
-            <ion-select-option value="0.2">0.2</ion-select-option>
-            <ion-select-option value="0.1">0.1</ion-select-option>
-            <ion-select-option value="0.2">0.2</ion-select-option>
-          </ion-select>
-        </ion-item>
-
         <p class="ion-margin">
           Tamaño de la fuente:
-          <select id="selectTamañoFuente" v-on:change="tamañoFuente()">
+          <select id="selectTamañoFuente" v-on:change="cambiarTamañoFuente()">
             <option>Elegí un tamaño</option>
             <option>10</option>
             <option>20</option>
             <option>30</option>
             <option>40</option>
             <option>50</option>
+          </select>
+        </p>
+
+        <p class="ion-margin">
+          Tipo de la fuente:
+          <select id="selectTipoDeFuente" v-on:change="cambiarTipoDeFuente()">
+            <option>Elegí una fuente</option>
+            <option>Arial</option>
+            <option>Symbol</option>
+            <option>Verdana</option>
+            <option>Courier</option>
+            <option>Helvetica</option>
+            <option>Calibri</option>
+            <option>Futura</option>
+          </select>
+        </p>
+
+        <p class="ion-margin">
+          Color de la fuente:
+          <select id="selectColorFuente" v-on:change="cambiarColor()">
+            <option>Elegí un color</option>
+            <option value="#ffffff">Blanco</option>
+            <option value="#737373">Gris</option>
+            <option value="#5083BA">Celeste</option>
+            <option value="#C93434">Rojo</option>
           </select>
         </p>
 
@@ -79,6 +93,22 @@
             <ion-select-option :value="50">50</ion-select-option>
           </ion-select>
         </ion-item>
+
+        <ion-item>
+          <ion-label>Separación de la fuente</ion-label>
+          <ion-select
+            id="selectSepararFuente"
+            v-on:change="separarFuente()"
+            placeholder="Elegí un tamaño"
+          >
+            <ion-select-option value="0">0</ion-select-option>
+            <ion-select-option value="0.1">0.1</ion-select-option>
+            <ion-select-option value="0.2">0.2</ion-select-option>
+            <ion-select-option value="0.1">0.1</ion-select-option>
+            <ion-select-option value="0.2">0.2</ion-select-option>
+          </ion-select>
+        </ion-item>
+
         <h5 class="ion-margin ion-text-justify">
           TEXTO DE EJEMPLO PARA PROBAR LA ACCESIBILIDAD
           <br />
@@ -137,31 +167,12 @@ export default {
       separarFuente() {
             let select = 0;
             select=document.getElementById("selectSepararFuente");
-            document.body.style.letterSpacing=select.options[select.selectedIndex].text+"em";
+            const fontSpacing = document.body.style.letterSpacing=select.options[select.selectedIndex].text+"em";
+            window.localStorage.setItem('fontSpacing', fontSpacing)            
       },
 
-      tamañoFuente() {
-          //  let select = 0;
-          //  select=document.getElementById("selectTamañoFuente");
-          //  alert(select.options[select.selectedIndex].text+"em");
-          //   document.body.style.fontSize=select.options[select.selectedIndex].text+"em";
-         //   document.body.style.color='#ffffff';
-          //  alert(document.body.style.backgoundcolor='#ffffff');
-           //const tamañoFuente= select.options[select.selectedIndex].text;
-           //alert(tamañoFuente+"px");
-          // alert(getComputedStyle(document.body).getPropertyValue('font-size'));  // tamaño actual de la fuente
-          //document.documentElement.style.setProperty('--font-size', `${tamañoFuente * 0.9}`)
-
-          //this.document.getElementsByTagName("h5").setAttribute("size","2");
-         //  document.body.style.fontsize(85+'px');
-         // document.body.style.fontsize=tamañoFuente+'px';
-           //const x = document.getElementsByClassName("ion-text-center");
-        // document.x[0].style.fontsize="60px";
-       // document.getElementsByTagName("body")[0].style.fontsize=tamañoFuente+"px";
-       // document.body.setAttribute('style', 'font-family:Arial !important');
-         //document.body.style.color="#cf3c4f";
-
-          const card=document.getElementsByTagName("*");
+      cambiarTamañoFuente() {         
+        const card=document.getElementsByTagName("*");
 
         const select=document.getElementById("selectTamañoFuente");
         const fontSize = select.options[select.selectedIndex].text
@@ -171,13 +182,60 @@ export default {
             return false
           }
           card[i].style.fontSize=fontSize+"px";
-         card[i].style.fontFamily="Arial";
-
+        // card[i].style.fontFamily="Symbol";
         }
-        window.localStorage.setItem('fontSize', fontSize + 'px')
+        window.localStorage.setItem('fontSize', fontSize + 'px')       
+      },
 
-      }
+      cambiarTipoDeFuente() {
+        const card=document.getElementsByTagName("*");
 
+        const select=document.getElementById("selectTipoDeFuente");
+        const fontFamily = select.options[select.selectedIndex].text
+        let i;
+        for ( i = 0; i < card.length; i++){
+          if (select=="Elegí un tamaño"){
+            return false
+          }
+          //card[i].style.fontSize=fontSize+"px";
+         card[i].style.fontFamily=fontFamily;
+        }
+        window.localStorage.setItem('fontFamily', fontFamily)       
+      },
+
+      cambiarColor(){
+        const body=document.getElementsByTagName("*");
+
+        const select=document.getElementById("selectColorFuente");
+        const fontColor = select.options[select.selectedIndex].value        
+        let i;
+        for ( i = 0; i < body.length; i++){
+          if (select=="Elegí un tamaño"){
+            return false
+          }
+         body[i].style.color=fontColor;                   
+        }
+        window.localStorage.setItem('fontColor', fontColor)            
+    },
   },
+
+  mounted() {
+    const fontSize = window.localStorage.getItem("fontSize");
+    const fontColor = window.localStorage.getItem("fontColor");
+    const fontSpacing = window.localStorage.getItem("fontSpacing");
+    const fontFamily = window.localStorage.getItem("fontFamily");
+    
+    const elems = document.getElementsByTagName("*");
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].style.fontSize = fontSize;
+      elems[i].style.color = fontColor;  
+      elems[i].style.fontFamily=fontFamily;       
+    }
+     document.body.style.letterSpacing = fontSpacing;
+  },
+
+
 };
 </script>
+
+

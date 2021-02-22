@@ -243,5 +243,18 @@ export default {
       create,
     };
   },
+
+  mounted() {
+    const fontSize = window.localStorage.getItem("fontSize");
+    const fontColor = window.localStorage.getItem("fontColor");
+    const fontSpacing = window.localStorage.getItem("fontSpacing");
+    const elems = document.getElementsByTagName("*");
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].style.fontSize = fontSize;
+      elems[i].style.color = fontColor;         
+    }
+     document.body.style.letterSpacing = fontSpacing;
+  },
+  
 };
 </script>

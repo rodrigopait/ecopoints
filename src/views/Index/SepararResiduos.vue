@@ -13,55 +13,7 @@
       <h3></h3>
       <ion-card>
         <img src="assets/img/cestos.jpg" alt="Imagen de cestos de basura" />
-          <ion-button color="success"   @click="cambiarTema()"
-                >Cambiar tema</ion-button
-              >
-   
-
-        <h4 class="ion-margin">Color de la fuente:
-          <select id="valor2" v-on:change="cambiarColor()">
-            <option>Elegí un color</option>
-            <option value="#ffffff">Blanco</option>        
-            <option value="#737373">Gris</option> 
-            <option value="#5083BA">Celeste</option>
-            <option value="#C93434">Rojo</option>        
-          </select>
-        </h4>  
-
-        <h4 class="ion-margin">Tamaño de la fuente:
-          <select id="valor" v-on:change="CambioTexto()">
-            <option>Elegí un tamaño</option>
-            <option>10</option>        
-            <option>20</option> 
-            <option>30</option>
-            <option>40</option>
-            <option>50</option>
-          </select>
-        </h4>  
-
-        <h4 class="ion-margin">Separacion de la fuente:
-          <select id="valorFuente" v-on:change="separarFuente()">
-            <option>Elegí un tamaño</option>
-            <option>0</option>  
-            <option>0.1</option>        
-            <option>0.2</option> 
-            <option>0.3</option>
-            <option>0.4</option>
-            <option>0.5</option>
-          </select>
-        </h4>  
-
-       <ion-item id="tema">
-          <ion-label>Tamaño de la fuente</ion-label>
-          <ion-select :interface-options="customAlertOptions" interface="alert" id="valor" v-on:change="CambioTexto()" multiple="false" placeholder="Selecciona un tamaño">
-            <ion-select-option :value="10">10</ion-select-option>
-            <ion-select-option :value="20">20</ion-select-option>
-            <ion-select-option :value="30">30</ion-select-option> 
-            <ion-select-option :value="40">40</ion-select-option> 
-            <ion-select-option :value="50">50</ion-select-option> 
-          </ion-select>
-        </ion-item>
-
+         
         <ion-card-subtitle class="ion-text-center"></ion-card-subtitle>
         <ion-text color="success">
           <h1 class="ion-text-center">¿Cómo separar los residuos?</h1>
@@ -143,71 +95,31 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonSelect,
-  IonSelectOption,
-  IonButton,
 } from "@ionic/vue";
 
 export default {
   name: "SepararResiduos",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage,  IonSelect, IonSelectOption,  IonButton, },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, },
 
    methods: {
 
-      CambioTexto(){
-        const card=document.getElementsByTagName("ion-card-content");
-        const h5=document.getElementsByTagName("h5");
-        const select=document.getElementById("valor");
-        let i;
-        for ( i = 0; i < card.length; i++){
-          if (select.options[select.selectedIndex].text=="Elegí un tamaño"){
-            return false
-          }
-          card[i].style.fontSize=select.options[select.selectedIndex].text+"px";
-          card[i].style.fontFamily="Arial";
-          
-        }
-        for ( i = 0; i < h5.length; i++){
-          if (select.options[select.selectedIndex].text=="Elegí un tamaño"){
-            return false
-          }
-          h5[i].style.fontSize=select.options[select.selectedIndex].text+"px";
-          h5[i].style.fontFamily="Arial";
-          
-        }
-    }, 
-
-    cambiarColor(){
-        //  document.style.backgroundColor = "#0000FF";
-         //  document.getElementsByTagName("ion-card").style.webkitFilter = "#0000FF";
-        const card=document.getElementsByTagName("ion-card-content");
-        const h5=document.getElementsByTagName("h5");
-        const select=document.getElementById("valor2");
-        let i;
-        for ( i = 0; i < card.length; i++){
-          if (select.options[select.selectedIndex].text=="Elegí un color"){
-            return false
-          }
-          card[i].style.color=select.options[select.selectedIndex].value;
-        //  card[i].style.fontFamily="Arial";
-          
-        }
-        for ( i = 0; i < h5.length; i++){
-          if (select.options[select.selectedIndex].text=="Elegí un color"){
-            return false
-          }
-          h5[i].style.color=select.options[select.selectedIndex].value;
-        //  h5[i].style.fontFamily="Arial";        
-        }
-    },
-     
-      separarFuente() {
-            let select = 0;
-             select=document.getElementById("valorFuente");           
-            document.body.style.letterSpacing=select.options[select.selectedIndex].text+"em";
-      },
-
   },
+  
+  mounted() {
+    const fontSize = window.localStorage.getItem("fontSize");
+    const fontColor = window.localStorage.getItem("fontColor");
+    const fontSpacing = window.localStorage.getItem("fontSpacing");
+    const fontFamily = window.localStorage.getItem("fontFamily");
+    
+    const elems = document.getElementsByTagName("*");
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].style.fontSize = fontSize;
+      elems[i].style.color = fontColor;  
+      elems[i].style.fontFamily=fontFamily;       
+    }
+     document.body.style.letterSpacing = fontSpacing;
+  },
+
 };
 </script>
 

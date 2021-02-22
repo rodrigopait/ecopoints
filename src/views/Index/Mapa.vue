@@ -69,11 +69,17 @@ export default {
   },
   mounted() {
     const fontSize = window.localStorage.getItem("fontSize");
+    const fontColor = window.localStorage.getItem("fontColor");
+    const fontSpacing = window.localStorage.getItem("fontSpacing");
+    const fontFamily = window.localStorage.getItem("fontFamily");
+    
     const elems = document.getElementsByTagName("*");
     for (let i = 0; i < elems.length; i++) {
       elems[i].style.fontSize = fontSize;
-      console.log(elems[i].style.fontSize);
+      elems[i].style.color = fontColor;  
+      elems[i].style.fontFamily=fontFamily;       
     }
+     document.body.style.letterSpacing = fontSpacing;
   },
 };
 </script>
