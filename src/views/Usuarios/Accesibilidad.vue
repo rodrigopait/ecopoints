@@ -36,17 +36,19 @@
         </p>
 
         <ion-item>
-        <ion-label>Separación de la fuente</ion-label>
-        <ion-select id="selectSepararFuente" v-on:change="separarFuente()" placeholder="Elegí un tamaño">
-          <ion-select-option value="0">0</ion-select-option>
-          <ion-select-option value="0.1">0.1</ion-select-option>
-          <ion-select-option value="0.2">0.2</ion-select-option>
-          <ion-select-option value="0.1">0.1</ion-select-option>
-           <ion-select-option value="0.2">0.2</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-
+          <ion-label>Separación de la fuente</ion-label>
+          <ion-select
+            id="selectSepararFuente"
+            v-on:change="separarFuente()"
+            placeholder="Elegí un tamaño"
+          >
+            <ion-select-option value="0">0</ion-select-option>
+            <ion-select-option value="0.1">0.1</ion-select-option>
+            <ion-select-option value="0.2">0.2</ion-select-option>
+            <ion-select-option value="0.1">0.1</ion-select-option>
+            <ion-select-option value="0.2">0.2</ion-select-option>
+          </ion-select>
+        </ion-item>
 
         <p class="ion-margin">
           Tamaño de la fuente:
@@ -114,7 +116,7 @@ import {
   IonContent,
   IonSelect,
   IonSelectOption,
-  IonLabel,  
+  IonLabel,
 } from "@ionic/vue";
 
 
@@ -125,7 +127,7 @@ export default {
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSelectOption, IonLabel, IonSelect, },
 
    setup() {
-    return {      
+    return {
       walk,
     };
   },
@@ -134,27 +136,23 @@ export default {
 
       separarFuente() {
             let select = 0;
-            select=document.getElementById("selectSepararFuente");           
+            select=document.getElementById("selectSepararFuente");
             document.body.style.letterSpacing=select.options[select.selectedIndex].text+"em";
       },
 
       tamañoFuente() {
-          // let select = 0;
-         //  select=document.getElementById("selectTamañoFuente");
-        // const body = document.getElementsByTagName('body')[0];
-
-          //body.setAttribute('style',`font-size: ${fontsize}rem`);
-         // document.body.style.fontSize=select.options[select.selectedIndex].text+"em";
-          // alert(select.options[select.selectedIndex].text+"em");
-          //document.body.style.fontSize=select.options[select.selectedIndex].text+"em"; 
+          //  let select = 0;
+          //  select=document.getElementById("selectTamañoFuente");
+          //  alert(select.options[select.selectedIndex].text+"em");
+          //   document.body.style.fontSize=select.options[select.selectedIndex].text+"em";
          //   document.body.style.color='#ffffff';
           //  alert(document.body.style.backgoundcolor='#ffffff');
            //const tamañoFuente= select.options[select.selectedIndex].text;
            //alert(tamañoFuente+"px");
           // alert(getComputedStyle(document.body).getPropertyValue('font-size'));  // tamaño actual de la fuente
           //document.documentElement.style.setProperty('--font-size', `${tamañoFuente * 0.9}`)
-       
-          //  this.document.getElementsByTagName('h5').setAttribute("size","2");
+
+          //this.document.getElementsByTagName("h5").setAttribute("size","2");
          //  document.body.style.fontsize(85+'px');
          // document.body.style.fontsize=tamañoFuente+'px';
            //const x = document.getElementsByClassName("ion-text-center");
@@ -163,23 +161,23 @@ export default {
        // document.body.setAttribute('style', 'font-family:Arial !important');
          //document.body.style.color="#cf3c4f";
 
-        const h5=document.getElementsByTagName("*");
-      
+          const card=document.getElementsByTagName("*");
+
         const select=document.getElementById("selectTamañoFuente");
+        const fontSize = select.options[select.selectedIndex].text
         let i;
-        for ( i = 0; i < h5.length; i++){
-          if (select.options[select.selectedIndex].text=="Elegí un tamaño"){
+        for ( i = 0; i < card.length; i++){
+          if (select=="Elegí un tamaño"){
             return false
           }
-          h5[i].style.fontSize=select.options[select.selectedIndex].text+"px";
-      //    card[i].style.fontFamily="Arial";
-          
-        } 
-    
+          card[i].style.fontSize=fontSize+"px";
+         card[i].style.fontFamily="Arial";
+
+        }
+        window.localStorage.setItem('fontSize', fontSize + 'px')
+
       }
 
   },
 };
-
 </script>
-

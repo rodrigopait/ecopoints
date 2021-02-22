@@ -124,5 +124,13 @@ export default {
       return modal.present();
     },
   },
+  mounted() {
+    const fontSize = window.localStorage.getItem("fontSize");
+    const elems = document.getElementsByTagName("*");
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].style.fontSize = fontSize;
+      console.log(elems[i].style.fontSize);
+    }
+  },
 };
 </script>
